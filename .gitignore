@@ -1,0 +1,45 @@
+# PlatformIO
+.pio/
+.pioenvs/
+.piolibdeps/
+
+# ESP-IDF build artifacts
+build/
+sdkconfig
+sdkconfig.old
+managed_components/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+.venv/
+venv/
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Credentials - NEVER commit
+secrets.h
+credentials.h
+*.env
+wifi_creds.*
+
+# Logs
+*.log
+logs/
+
+# Generated docs
+docs/_build/
+docs/html/
+docs/latex/
