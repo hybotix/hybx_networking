@@ -1,23 +1,6 @@
-idf_component_register(
-    SRCS
-        "main.c"
-        "hybx_wifi.c"
-        "hybx_mqtt.c"
-        "hybx_mdns.c"
-        "hybx_sntp.c"
-        "hybx_netinfo.c"
-    INCLUDE_DIRS
-        "."
-        "../include"
-    REQUIRES
-        esp_wifi
-        esp_netif
-        esp_event
-        mqtt
-        mdns
-        nvs_flash
-        lwip
-        esp_sntp
-        json
-        log
-)
+# This file was automatically generated for projects
+# without default 'CMakeLists.txt' file.
+
+FILE(GLOB_RECURSE app_sources ${CMAKE_SOURCE_DIR}/src/*.*)
+
+idf_component_register(SRCS ${app_sources})
