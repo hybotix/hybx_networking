@@ -58,12 +58,12 @@ esp_err_t connect_to_wifi (char *ssid, char *passwd) {
     /*
         Initialize structs for use by the WiFi routines
     */
-    wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
+    wifi_init_config_t init_config = WIFI_INIT_CONFIG_DEFAULT();
 
     wifi_config_t wifi_config = {
-            .sta = {
-            .ssid = "",
-            .password = "",
+        .sta = {
+            .ssid = ssid,
+            .password = passwd,
         },
     };
 
@@ -84,6 +84,14 @@ esp_err_t connect_to_wifi (char *ssid, char *passwd) {
         } else {
             status = ESP_OK; 
         }
+    }
+
+    if (status == ESP_OK) {
+        status = esp_wifi_init(&init_config);
+    }
+
+    if (status == ESP_OK) {
+        status = esp_wifi_set_mode(WIFI_MODE_STA);
     }
 
     if (status == ESP_OK) {
