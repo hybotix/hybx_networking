@@ -58,6 +58,10 @@ void app_main(void) {
     mount_little_fs();
     secrets = read_secrets();
 
-    ssid = get_json_value("WIFI_SSID", secrets);
-    passwd = get_json_value("WIFI_PASSWD", secrets);
+    hybx_json_parse(secrets);
+    ssid = hybx_json_get_string(secrets, "WIFI_SSID");
+    passwd = hybx_json_get_string(secrets, "WIFI_PASSWD");
+
+    // ssid = get_json_value("WIFI_SSID", secrets);
+    // passwd = get_json_value("WIFI_PASSWD", secrets);
 }
