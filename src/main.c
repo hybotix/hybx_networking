@@ -62,8 +62,8 @@ esp_err_t connect_to_wifi (char *ssid, char *passwd) {
 
     wifi_config_t wifi_config = {
         .sta = {
-            .ssid = ssid,
-            .password = passwd,
+            .ssid = "",
+            .password = "",
         },
     };
 
