@@ -3,3 +3,5 @@ dependencies:
   joltwallet/littlefs: "^1.0.0"
   hybotix/hybx_json_utilities:
     git: https://github.com/hybotix/hybx_json_utilities.git
+  hybotix/hybx_led_utilities:
+    git: https://github.com/hybotix/hybx_led_utilities.git

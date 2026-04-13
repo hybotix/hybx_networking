@@ -11,6 +11,7 @@
 #include "esp_log.h"
 #include "cJSON.h"
 #include "hybx_json_utilities.h"
+#include "hybx_led_utilities.h"
 
 esp_err_t mount_little_fs (void) {
     esp_err_t status = ESP_OK;
