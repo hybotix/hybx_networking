@@ -1,0 +1,2 @@
+# Suppress ESP-IDF framework log output
+CONFIG_LOG_DEFAULT_LEVEL=0
