@@ -12,7 +12,9 @@
 #include "cJSON.h"
 #include "hybx_json_utilities.h"
 
-void mount_little_fs (void) {
+esp_err_t mount_little_fs (void) {
+    esp_err_t status = ESP_OK;
+
     esp_vfs_littlefs_conf_t littlefs_conf = {
         .base_path = "/littlefs",
         .partition_label = "littlefs",
@@ -20,7 +22,7 @@ void mount_little_fs (void) {
         .dont_mount = false,
     };
 
-    esp_err_t ret = esp_vfs_littlefs_register(&littlefs_conf);
+    return esp_vfs_littlefs_register(&littlefs_conf);
 }
 
 char *read_secrets(void) {
@@ -121,25 +123,29 @@ void app_main(void) {
     esp_err_t status = ESP_OK;
 
     //  Mount the file system
-    mount_little_fs();
+    status = mount_little_fs();
 
-    //  Read the Secrets file
-    secrets = read_secrets();
-
-    //  Parse the secrets
-    json = hybx_json_parse(secrets);
-
-    //  Get the WiFi credentials
-    ssid = hybx_json_get_string(json, "WIFI_SSID");
-    passwd = hybx_json_get_string(json, "WIFI_PASSWD");
-
-    //  Try to connect to WiFi
-    status = connect_to_wifi(ssid, passwd);
-
-    //  Show the status of the connection.
     if (status == ESP_OK) {
-        printf("WiFi connected successfully\n");
+        //  Read the Secrets file
+        secrets = read_secrets();
+
+        //  Parse the secrets
+        json = hybx_json_parse(secrets);
+
+        //  Get the WiFi credentials
+        ssid = hybx_json_get_string(json, "WIFI_SSID");
+        passwd = hybx_json_get_string(json, "WIFI_PASSWD");
+
+        //  Try to connect to WiFi
+        status = connect_to_wifi(ssid, passwd);
+
+        //  Show the status of the connection.
+        if (status == ESP_OK) {
+            printf("WiFi connected successfully\n");
+        } else {
+            printf("WiFi connection failed\n");
+        }
     } else {
-        printf("WiFi connection failed\n");
+        printf("There was a problem mounting the file system!\n");
     }
 }
