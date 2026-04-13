@@ -53,15 +53,20 @@ char *get_credential(char *key, char *secrets) {
 }
 
 void app_main(void) {
-    char *secrets, ssid, passwd;
+    char *secrets;
+    char *ssid, *passwd;
+    cJSON *json;
 
+    //  Mount the file system
     mount_little_fs();
+
+    //  Read the Secrets file
     secrets = read_secrets();
 
-    hybx_json_parse(secrets);
-    ssid = hybx_json_get_string(secrets, "WIFI_SSID");
-    passwd = hybx_json_get_string(secrets, "WIFI_PASSWD");
+    //  Parse the secrets
+    json = hybx_json_parse(secrets);
 
-    // ssid = get_json_value("WIFI_SSID", secrets);
-    // passwd = get_json_value("WIFI_PASSWD", secrets);
+    //  Get the WiFi credentials
+    ssid = hybx_json_get_string(json, "WIFI_SSID");
+    passwd = hybx_json_get_string(json, "WIFI_PASSWD");
 }
