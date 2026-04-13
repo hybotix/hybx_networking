@@ -117,7 +117,7 @@ void app_main(void) {
     char *secrets;
     char *ssid, *passwd;
     cJSON *json;
-    esp_err_t wifi_status = ESP_OK;
+    esp_err_t status = ESP_OK;
 
     //  Mount the file system
     mount_little_fs();
@@ -131,4 +131,12 @@ void app_main(void) {
     //  Get the WiFi credentials
     ssid = hybx_json_get_string(json, "WIFI_SSID");
     passwd = hybx_json_get_string(json, "WIFI_PASSWD");
+
+    status = connect_to_wifi(ssid, passwd);
+
+    if (status == ESP_OK) {
+        ESP_LOGI("main", "WiFi connected successfully");
+    } else {
+        ESP_LOGE("main", "WiFi connection failed");
+    }
 }
