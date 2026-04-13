@@ -132,8 +132,10 @@ void app_main(void) {
     ssid = hybx_json_get_string(json, "WIFI_SSID");
     passwd = hybx_json_get_string(json, "WIFI_PASSWD");
 
+    //  Try to connect to WiFi
     status = connect_to_wifi(ssid, passwd);
 
+    //  Show the status of the connection.
     if (status == ESP_OK) {
         ESP_LOGI("main", "WiFi connected successfully");
     } else {
