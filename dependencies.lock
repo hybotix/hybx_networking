@@ -1,0 +1,32 @@
+dependencies:
+  hybotix/hybx_json_utilities:
+    component_hash: d1d4c84323fc876633a8e80fedb70e8944475b53563afe84838a0c92dbabb277
+    dependencies:
+    - name: idf
+      version: '>=5.0.0'
+    source:
+      git: https://github.com/hybotix/hybx_json_utilities.git
+      path: .
+      type: git
+    version: b8c3e3ed1a6951853514a671a09a2f8b2ba911f7
+  idf:
+    source:
+      type: idf
+    version: 5.5.3
+  joltwallet/littlefs:
+    component_hash: dcea25bcef2de023f089f5f01e8d8c46ad1b8ffef75861ad5ffb4098555839df
+    dependencies:
+    - name: idf
+      require: private
+      version: '>=5.0'
+    source:
+      registry_url: https://components.espressif.com/
+      type: service
+    version: 1.20.4
+direct_dependencies:
+- hybotix/hybx_json_utilities
+- idf
+- joltwallet/littlefs
+manifest_hash: a37db865d78a5a7e95ab335279b07218f0171cd49bd58154302eb9ea6c9bbf7f
+target: esp32s3
+version: 2.0.0

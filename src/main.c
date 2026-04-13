@@ -49,5 +49,9 @@ char *read_secrets(void) {
 }
 
 void app_main(void) {
+    char *secrets;
+
     mount_little_fs();
+    secrets = read_secrets();
+
 }
