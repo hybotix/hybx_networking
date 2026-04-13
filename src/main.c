@@ -57,6 +57,9 @@ void app_main(void) {
     char *ssid, *passwd;
     cJSON *json;
 
+    //  Initialize NVS flash - required by the ESP-IDF WiFi driver
+    nvs_flash_init();
+
     //  Mount the file system
     mount_little_fs();
 
