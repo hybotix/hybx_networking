@@ -138,8 +138,8 @@ void app_main(void) {
 
     //  Show the status of the connection.
     if (status == ESP_OK) {
-        ESP_LOGI("main", "WiFi connected successfully");
+        printf("WiFi connected successfully\n");
     } else {
-        ESP_LOGE("main", "WiFi connection failed");
+        printf("WiFi connection failed\n");
     }
 }
