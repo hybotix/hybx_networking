@@ -48,10 +48,6 @@ char *read_secrets(void) {
     return secrets;
 }
 
-char *get_credential(char *key, char *secrets) {
-
-}
-
 esp_err_t connect_to_wifi (char *ssid, char *passwd) {
     esp_err_t status = ESP_OK;
 
