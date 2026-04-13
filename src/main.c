@@ -55,6 +55,18 @@ char *get_credential(char *key, char *secrets) {
 esp_err_t connect_to_wifi (char *ssid, char *passwd) {
     esp_err_t status = ESP_OK;
 
+    /*
+        Initialize structs for use by the WiFi routines
+    */
+    wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
+
+    wifi_config_t wifi_config = {
+            .sta = {
+            .ssid = "",
+            .password = "",
+        },
+    };
+
     //  Initialize NVS flash - required by the ESP-IDF WiFi driver
     status = nvs_flash_init();
 
@@ -93,18 +105,6 @@ void app_main(void) {
     char *ssid, *passwd;
     cJSON *json;
     esp_err_t wifi_status = ESP_OK;
-
-    /*
-        Initialize structs for use by WiFi routines
-    */
-    wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
-
-    wifi_config_t wifi_config = {
-            .sta = {
-            .ssid = "",
-            .password = "",
-        },
-    };
 
     //  Mount the file system
     mount_little_fs();
