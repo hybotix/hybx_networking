@@ -52,13 +52,16 @@ char *get_credential(char *key, char *secrets) {
 
 }
 
+void connect_to_wifi (char *ssid, char *passwd) {
+    //  Initialize NVS flash - required by the ESP-IDF WiFi driver
+    nvs_flash_init();
+
+}
+
 void app_main(void) {
     char *secrets;
     char *ssid, *passwd;
     cJSON *json;
-
-    //  Initialize NVS flash - required by the ESP-IDF WiFi driver
-    nvs_flash_init();
 
     //  Mount the file system
     mount_little_fs();
