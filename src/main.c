@@ -4,6 +4,7 @@
 #include "driver/gpio.h"
 #include "esp_littlefs.h"
 #include "cJSON.h"
+#include "hybx_json_utilities.h"
 
 void mount_little_fs (void) {
     esp_vfs_littlefs_conf_t littlefs_conf = {
