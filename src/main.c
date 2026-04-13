@@ -79,7 +79,11 @@ esp_err_t connect_to_wifi (char *ssid, char *passwd) {
     }
 
     if (status == ESP_OK) {
-        status = esp_netif_create_default_wifi_sta();
+         if (esp_netif_create_default_wifi_sta() == NULL) {
+            status = ESP_FAIL;
+        } else {
+            status = ESP_OK; 
+        }
     }
 
     if (status == ESP_OK) {
