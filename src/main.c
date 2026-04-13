@@ -48,10 +48,16 @@ char *read_secrets(void) {
     return secrets;
 }
 
+char *get_credential(char *key, char *secrets) {
+
+}
+
 void app_main(void) {
-    char *secrets;
+    char *secrets, ssid, passwd;
 
     mount_little_fs();
     secrets = read_secrets();
 
+    ssid = get_json_value("WIFI_SSID", secrets);
+    passwd = get_json_value("WIFI_PASSWD", secrets);
 }
